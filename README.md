@@ -17,8 +17,6 @@ def obtenir_nombre(message):
                 return float(nombre)
             else:
                 return int(nombre)
-        except ValueError:
-            print("Veuillez entrer un nombre valide.")
 
 def calculatrice():
     x = obtenir_nombre("Entrez un nombre : ")
