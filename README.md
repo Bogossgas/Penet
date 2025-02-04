@@ -1,5 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Feb  4 16:31:10 2025
+
+@author: G.chanut
+"""
+
+
 import math
 
+# Fonction pour afficher le menu des opérations
 def afficher_menu(x):
     print(f"Choisissez une opération :")
     print(f"1) {x} + y")
@@ -7,8 +16,14 @@ def afficher_menu(x):
     print(f"3) {x} × y")
     print(f"4) {x} ÷ y")
     print(f"5) √{x}")
-    print("6) Quitter")
+    print(f"6) {x} div y")
+    print(f"7) {x} mod y")
+    print(f"8) {x} ^ y")
+    print(f"9) inv({x})")
+    print("10) Repartir à 0")
+    print("11) Quitter")
 
+# Fonction pour obtenir un nombre de l'utilisateur
 def obtenir_nombre(message):
     while True:
         try:
@@ -17,8 +32,18 @@ def obtenir_nombre(message):
                 return float(nombre)
             else:
                 return int(nombre)
+        except ValueError:
+            print("Veuillez entrer un nombre valide.")
+
+def choisir_historique(historique):
+    print("Historique des résultats :")
+    for i, valeur in enumerate(historique):
+        print(f"{i + 1}) {valeur}")
+    choix = obtenir_nombre("Choisissez un résultat pour y : ")
+    return historique[choix - 1]
 
 def calculatrice():
+    historique = []
     x = obtenir_nombre("Entrez un nombre : ")
     
     while True:
@@ -46,12 +71,28 @@ def calculatrice():
             else:
                 print("Racine carrée d'un nombre négatif impossible.")
         elif choix == '6':
+            y = obtenir_nombre("Valeur de y : ")
+            x = x // y
+        elif choix == '7':
+            y = obtenir_nombre("Valeur de y : ")
+            x = x % y
+        elif choix == '8':
+            y = obtenir_nombre("Valeur de y : ")
+            x = x ** y
+        elif choix == '9':
+            if x != 0:
+                x = 1 / x
+            else:
+                print("Inverse de zéro impossible.")
+        elif choix == '10':
+            x = obtenir_nombre("Entrez un nouveau nombre de départ : ")
+        elif choix == '11':
             print("Au revoir!")
             break
         else:
             print("Choix invalide.")
         
+        historique.append(x)
         print(f"Résultat : {x}")
 
 calculatrice()
-
