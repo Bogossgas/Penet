@@ -162,3 +162,77 @@ def calculatrice():
         print(f"Résultat : {x}")
 
 calculatrice()
+
+
+
+import math
+
+def afficher_menu(x):
+    print(f"Choisissez une opération :")
+    print(f"1) {x} + y")
+    print(f"2) {x} - y")
+    print(f"3) {x} × y")
+    print(f"4) {x} ÷ y")
+    print(f"5) √{x}")
+    print(f"6) {x} div y")
+    print(f"7) {x} mod y")
+    print(f"8) {x} ^ y")
+    print(f"9) inv({x})")
+    print("10) Recommencer")
+    print("11) Quitter")
+
+def obtenir_nombre(message):
+    while True:
+        nombre = input(message)
+        if '.' in nombre:
+            return float(nombre)
+        else:
+            return int(nombre)
+
+def calculatrice():
+    historique = []
+    x = obtenir_nombre("Entrez un nombre : ")
+    
+    while True:
+        afficher_menu(x)
+        choix = input("Choix : ")
+        
+        if choix in ['1', '2', '3', '4', '6', '7', '8']:
+            y = obtenir_nombre("Valeur de y : ")
+            if choix == '1':
+                x = x + y
+            elif choix == '2':
+                x = x - y
+            elif choix == '3':
+                x = x * y
+            elif choix == '4':
+                x = x / y
+            elif choix == '6':
+                x = x // y
+            elif choix == '7':
+                x = x % y
+            elif choix == '8':
+                x = x ** y
+        elif choix == '5':
+            x = math.sqrt(x)
+        elif choix == '9':
+            x = 1 / x
+        elif choix == '10':
+            x = obtenir_nombre("Entrez un nouveau nombre de départ : ")
+            historique.clear()
+            continue
+        elif choix == '11':
+            print("Au revoir!")
+            break
+        else:
+            print("Choix invalide.")
+            continue
+        
+        historique.append(x)
+        print(f"Résultat : {x}")
+        
+        # Afficher l'historique
+        print("Historique des résultats :", historique)
+
+calculatrice()
+
