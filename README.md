@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+Hugo Jeandeau-diop
+Gaspard Chanut
+
+Calculatrice 
+F7
+"""
 import math
 
 def afficher_menu(x):
