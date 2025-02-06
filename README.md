@@ -180,25 +180,33 @@ def afficher_menu(x):
     print(f"9) inv({x})")
     print("10) Recommencer")
     print("11) Quitter")
+    print("12) Choisir un ancien résultat pour y")
 
-def obtenir_nombre(message):
+def obtenir_nombre(message, historique):
     while True:
         nombre = input(message)
-        if '.' in nombre:
+        if nombre == 'h' and historique:
+            print("Historique des résultats :", historique)
+            try:
+                index = int(input("Entrez l'index du résultat souhaité : "))
+                return historique[index]
+            except (IndexError, ValueError):
+                print("Index invalide. Veuillez réessayer.")
+        elif '.' in nombre:
             return float(nombre)
         else:
             return int(nombre)
 
 def calculatrice():
     historique = []
-    x = obtenir_nombre("Entrez un nombre : ")
+    x = obtenir_nombre("Entrez un nombre : ", historique)
     
     while True:
         afficher_menu(x)
         choix = input("Choix : ")
         
         if choix in ['1', '2', '3', '4', '6', '7', '8']:
-            y = obtenir_nombre("Valeur de y : ")
+            y = obtenir_nombre("Valeur de y (ou 'h' pour historique) : ", historique)
             if choix == '1':
                 x = x + y
             elif choix == '2':
@@ -218,7 +226,7 @@ def calculatrice():
         elif choix == '9':
             x = 1 / x
         elif choix == '10':
-            x = obtenir_nombre("Entrez un nouveau nombre de départ : ")
+            x = obtenir_nombre("Entrez un nouveau nombre de départ : ", historique)
             historique.clear()
             continue
         elif choix == '11':
@@ -235,4 +243,5 @@ def calculatrice():
         print("Historique des résultats :", historique)
 
 calculatrice()
+
 
