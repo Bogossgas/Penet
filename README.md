@@ -245,10 +245,10 @@ def calculatrice():
 calculatrice()
 
 ___________________________________________________________________________________
-
-import math
+import math  # Importation du module math pour les opérations mathématiques avancées
 
 def afficher_menu(x):
+    # Affiche le menu des opérations disponibles avec la valeur actuelle de x
     print(f"\nChoisissez une opération :")
     print(f"1) {x} + y")
     print(f"2) {x} - y")
@@ -264,61 +264,63 @@ def afficher_menu(x):
     print("12) Quitter")
 
 def obtenir_nombre(message):
+    # Demande à l'utilisateur de saisir un nombre et le convertit en int ou float selon la présence d'un point
     while True:
-            nombre = input(message)
-            if '.' in nombre:
-                return float(nombre)
-            else:
-                return int(nombre)
+        nombre = input(message)
+        if '.' in nombre:
+            return float(nombre)
+        else:
+            return int(nombre)
 
 def calculatrice():
-    x = obtenir_nombre("Entrez un nombre : ")
-    historique = [x]
+    # Fonction principale de la calculatrice
+    x = obtenir_nombre("Entrez un nombre : ")  # Demande le premier nombre
+    historique = [x]  # Initialise l'historique avec le premier nombre
 
     while True:
-        afficher_menu(x)
+        afficher_menu(x)  # Afficher le menu avec la valeur actuelle de x
         choix = input("Choix : ")
 
-        if choix == '1':
+        if choix == '1':  # Addition
             y = obtenir_nombre("Valeur de y : ")
             x = x + y
-        elif choix == '2':
+        elif choix == '2':  # Soustraction
             y = obtenir_nombre("Valeur de y : ")
             x = x - y
-        elif choix == '3':
+        elif choix == '3':  # Multiplication
             y = obtenir_nombre("Valeur de y : ")
             x = x * y
-        elif choix == '4':
+        elif choix == '4':  # Division
             y = obtenir_nombre("Valeur de y : ")
             x = x / y
-        elif choix == '5':
+        elif choix == '5':  # Racine carrée
             x = math.sqrt(x)
-        elif choix == '6':
+        elif choix == '6':  # Division entière
             y = obtenir_nombre("Valeur de y : ")
             x = x // y
-        elif choix == '7':
+        elif choix == '7':  # Modulo (reste de la division entière)
             y = obtenir_nombre("Valeur de y : ")
             x = x % y
-        elif choix == '8':
+        elif choix == '8':  # Puissance
             y = obtenir_nombre("Valeur de y : ")
             x = x ** y
-        elif choix == '9':
+        elif choix == '9':  # Inverse (1/x)
             x = 1 / x
-        elif choix == '10':
+        elif choix == '10':  # Réinitialisation de la calculatrice
             x = obtenir_nombre("Entrez un nouveau nombre : ")
             historique.append(f"Réinitialisation → {x}")
-        elif choix == '11':
+        elif choix == '11':  # Affichager de l'historique
             print("Historique des résultats :")
             for val in historique:
                 print(val)
-        elif choix == '12':
+        elif choix == '12':  # Quitter le programme
             print("Au revoir!")
             break
         else:
             print("Choix invalide.")
             continue
         
-        historique.append(x)
-        print(f"Résultat : {x}")
+        historique.append(x)  # Ajouter le résultat à l'historique
+        print(f"Résultat : {x}")  # Afficher le résultat de l'opération
 
-calculatrice()
+calculatrice()  # Lancement de la calculatrice
