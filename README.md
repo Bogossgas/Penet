@@ -1,7 +1,7 @@
-import math  # Importation du module math pour les opérations mathématiques avancées
+import math
 
 def afficher_menu(x):
-    # Affiche le menu des opérations disponibles avec la valeur actuelle de x
+    # Affiche le menu des opérations 
     print(f"\nChoisissez une opération :")
     print(f"1) {x} + y")
     print(f"2) {x} - y")
@@ -17,7 +17,7 @@ def afficher_menu(x):
     print("12) Quitter")
 
 def obtenir_nombre(message):
-    # Demande à l'utilisateur de saisir un nombre et le convertit en int ou float selon la présence d'un point
+    # Demande à l'utilisateur de saisir un nombre
     while True:
         nombre = input(message)
         if '.' in nombre:
@@ -26,7 +26,6 @@ def obtenir_nombre(message):
             return int(nombre)
 
 def calculatrice():
-    # Fonction principale de la calculatrice
     x = obtenir_nombre("Entrez un nombre : ")  # Demande le premier nombre
     historique = [x]  # Initialise l'historique avec le premier nombre
 
@@ -51,13 +50,13 @@ def calculatrice():
         elif choix == '6':  # Division entière
             y = obtenir_nombre("Valeur de y : ")
             x = x // y
-        elif choix == '7':  # Modulo (reste de la division entière)
+        elif choix == '7':  # Modulo 
             y = obtenir_nombre("Valeur de y : ")
             x = x % y
         elif choix == '8':  # Puissance
             y = obtenir_nombre("Valeur de y : ")
             x = x ** y
-        elif choix == '9':  # Inverse (1/x)
+        elif choix == '9':  # Inverse
             x = 1 / x
         elif choix == '10':  # Réinitialisation de la calculatrice
             x = obtenir_nombre("Entrez un nouveau nombre : ")
@@ -74,6 +73,6 @@ def calculatrice():
             continue
         
         historique.append(x)  # Ajouter le résultat à l'historique
-        print(f"Résultat : {x}")  # Afficher le résultat de l'opération
+        print(f"Résultat : {x}")  # Afficher le résultat
 
-calculatrice()  # Lancement de la calculatrice
+calculatrice() 
