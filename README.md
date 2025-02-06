@@ -2,9 +2,10 @@
 """
 Created on Tue Feb  4 16:31:10 2025
 
-@author: G.chanut
-"""
+Gaspard chanut
+Hugo Jeandeau-diop
 
+"""
 
 import math
 
